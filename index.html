@@ -1,0 +1,180 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>MystiScoop | Mystery Scoop Store</title>
+<link rel="stylesheet" href="style.css">
+<script defer src="script.js"></script>
+<style>
+/* Ultra-premium inline CSS so copy-paste works immediately */
+
+/* GLOBAL */
+*{margin:0;padding:0;box-sizing:border-box;font-family:Poppins,sans-serif;}
+body{background:linear-gradient(135deg,#0f1021,#1c1d3c,#0f1021);color:white;line-height:1.6;}
+.demo-bar{background:linear-gradient(90deg,#ff3cac,#784ba0,#2b86c5);text-align:center;padding:8px;font-size:13px;letter-spacing:1px;}
+.navbar{display:flex;justify-content:space-between;align-items:center;padding:18px 5%;background:rgba(0,0,0,0.25);backdrop-filter:blur(8px);position:sticky;top:0;z-index:100;}
+.logo{font-size:22px;font-weight:700;color:#ff9cf5;letter-spacing:1px;}
+nav a{margin:0 10px;text-decoration:none;color:#ddd;font-size:14px;transition:0.3s;}
+nav a:hover{color:#ff9cf5;}
+.cart-icon{font-size:18px;cursor:pointer;}
+#cart-count{background:#ff3cac;padding:3px 7px;border-radius:50%;font-size:12px;margin-left:4px;}
+.hero{padding:90px 5%;text-align:center;background:radial-gradient(circle at center,#2b2e6e,#0f1021);}
+.hero h1{font-size:42px;margin-bottom:15px;background:linear-gradient(90deg,#ff9cf5,#7ee8fa);-webkit-background-clip:text;-webkit-text-fill-color:transparent;}
+.hero p{color:#ccc;margin-bottom:25px;}
+.hero button{background:linear-gradient(45deg,#ff3cac,#784ba0);border:none;padding:12px 22px;border-radius:25px;color:white;font-size:15px;cursor:pointer;transition:0.3s;}
+.hero button:hover{transform:scale(1.05);box-shadow:0 0 20px #ff3cac;}
+.section{padding:70px 5%;text-align:center;}
+.grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(220px,1fr));gap:25px;}
+.card{background:rgba(255,255,255,0.05);border-radius:15px;padding:15px;backdrop-filter:blur(6px);transition:0.3s;box-shadow:0 0 10px rgba(0,0,0,0.4);}
+.card:hover{transform:translateY(-8px);box-shadow:0 0 25px rgba(255,60,172,0.5);}
+.card img{width:100%;border-radius:12px;margin-bottom:10px;}
+.card h3{font-size:16px;margin-bottom:5px;}
+.card p{color:#bbb;margin-bottom:10px;}
+.card button{background:linear-gradient(45deg,#ff3cac,#784ba0);border:none;padding:8px 16px;border-radius:20px;color:white;cursor:pointer;transition:0.3s;}
+.card button:hover{box-shadow:0 0 15px #ff3cac;}
+.steps-grid{display:grid;grid-template-columns:repeat(auto-fit,minmax(200px,1fr));gap:25px;}
+.step{background:rgba(255,255,255,0.05);padding:25px;border-radius:14px;transition:0.3s;}
+.step:hover{transform:translateY(-5px);box-shadow:0 0 18px rgba(126,232,250,0.3);}
+.review{background:rgba(255,255,255,0.05);padding:15px;margin:10px auto;border-radius:10px;max-width:500px;box-shadow:0 3px 12px rgba(0,0,0,0.05);}
+.cart{padding:50px 5%;}
+.cart-item{display:flex;justify-content:space-between;align-items:center;background:rgba(255,255,255,0.05);padding:10px;margin-bottom:10px;border-radius:8px;box-shadow:0 3px 10px rgba(0,0,0,0.05);}
+.cart-item button{background:#ff5c5c;border:none;color:white;padding:4px 8px;border-radius:6px;cursor:pointer;}
+footer{padding:25px;text-align:center;background:#0c0c1a;color:#aaa;font-size:14px;}
+@media(max-width:768px){.navbar{flex-direction:column;gap:10px;}nav{display:flex;flex-wrap:wrap;justify-content:center;}nav a{margin:5px;font-size:13px;}.hero h1{font-size:28px;}.grid{grid-template-columns:repeat(auto-fit,minmax(160px,1fr));}}
+</style>
+</head>
+<body>
+
+<div class="demo-bar">
+⚠ DEMO WEBSITE — Mystery Scoop Store
+</div>
+
+<header class="navbar">
+<div class="logo">MystiScoop</div>
+<nav>
+<a href="#hero">Home</a>
+<a href="#shop">Shop Scoops</a>
+<a href="#mega">Mega Boxes</a>
+<a href="#how">How It Works</a>
+<a href="#gallery">Gallery</a>
+<a href="#reviews">Reviews</a>
+<a href="#cart">Cart</a>
+</nav>
+<div class="cart-icon">🛒 <span id="cart-count">0</span></div>
+</header>
+
+<!-- HERO -->
+<section id="hero" class="hero">
+<h1>What Will You Discover?</h1>
+<p>Every scoop contains a surprise mix of charms, stickers, jewelry, and mini collectibles.</p>
+<button onclick="document.getElementById('shop').scrollIntoView({behavior:'smooth'})">Start Scooping</button>
+</section>
+
+<!-- SHOP -->
+<section id="shop" class="section">
+<h2>Featured Mystery Scoops</h2>
+<div class="grid">
+<div class="card" data-name="Starter Scoop" data-price="299">
+<img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=500&q=80" alt="Starter Scoop">
+<h3>Starter Scoop</h3>
+<p>₹299</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+<div class="card" data-name="Charm Lover Scoop" data-price="499">
+<img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=500&q=80" alt="Charm Scoop">
+<h3>Charm Lover Scoop</h3>
+<p>₹499</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+<div class="card" data-name="Kawaii Surprise" data-price="599">
+<img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=500&q=80" alt="Kawaii Scoop">
+<h3>Kawaii Surprise</h3>
+<p>₹599</p>
+<button class="add-cart">Add to Cart</button>
+</div>
+</div>
+</section>
+
+<!-- HOW IT WORKS -->
+<section id="how" class="section">
+<h2>How It Works</h2>
+<div class="steps-grid">
+<div class="step"><h3>1️⃣ Pick a Scoop</h3><p>Choose the mystery scoop you like.</p></div>
+<div class="step"><h3>2️⃣ We Pack Surprises</h3><p>Our team packs random goodies.</p></div>
+<div class="step"><h3>3️⃣ Enjoy the Reveal</h3><p>Open your scoop and discover the surprises.</p></div>
+</div>
+</section>
+
+<!-- GALLERY -->
+<section id="gallery" class="section">
+<h2>Gallery</h2>
+<div class="grid">
+<img src="https://images.unsplash.com/photo-1607083206968-13611e3d76db?auto=format&fit=crop&w=500&q=80" alt="Scoop 1">
+<img src="https://images.unsplash.com/photo-1607082348824-0a96f2a4b9da?auto=format&fit=crop&w=500&q=80" alt="Scoop 2">
+<img src="https://images.unsplash.com/photo-1596461404969-9ae70f2830c1?auto=format&fit=crop&w=500&q=80" alt="Scoop 3">
+</div>
+</section>
+
+<!-- REVIEWS -->
+<section id="reviews" class="section">
+<h2>Customer Reviews</h2>
+<div class="review">⭐ ⭐ ⭐ ⭐ ⭐ Amazing surprise scoop!</div>
+<div class="review">⭐ ⭐ ⭐ ⭐ Loved the charms inside.</div>
+<div class="review">⭐ ⭐ ⭐ ⭐ ⭐ So fun and addictive!</div>
+</section>
+
+<!-- CART -->
+<section id="cart" class="cart">
+<h2>Your Cart</h2>
+<div id="cart-items"></div>
+<h3>Total: ₹<span id="cart-total">0</span></h3>
+</section>
+
+<footer>
+<p>© 2026 MystiScoop | Designed by - Livanika.designs</p>
+</footer>
+
+<script>
+// Ultra premium cart JS
+let cart = JSON.parse(localStorage.getItem("mystiScoopCart")) || [];
+const cartItemsContainer = document.getElementById("cart-items");
+const cartTotalEl = document.getElementById("cart-total");
+const cartCountEl = document.getElementById("cart-count");
+function updateCartUI(){
+cartItemsContainer.innerHTML = "";
+let total = 0, count = 0;
+cart.forEach((item,index)=>{
+total += item.price*item.qty; count += item.qty;
+const div = document.createElement("div");
+div.className="cart-item";
+div.innerHTML=`<span>${item.name}</span>
+<div><button onclick="decrease(${index})">−</button>
+<span>${item.qty}</span>
+<button onclick="increase(${index})">+</button></div>
+<span>₹${item.price*item.qty}</span>
+<button onclick="removeItem(${index})">x</button>`;
+cartItemsContainer.appendChild(div);
+});
+cartTotalEl.innerText=total;
+cartCountEl.innerText=count;
+localStorage.setItem("mystiScoopCart",JSON.stringify(cart));
+}
+document.querySelectorAll(".add-cart").forEach(button=>{
+button.addEventListener("click",()=>{
+const card = button.closest(".card");
+const name = card.dataset.name;
+const price = parseInt(card.dataset.price);
+const existing = cart.find(item=>item.name===name);
+if(existing){existing.qty++}else{cart.push({name:name,price:price,qty:1});}
+updateCartUI();
+});
+});
+function increase(index){cart[index].qty++; updateCartUI();}
+function decrease(index){if(cart[index].qty>1){cart[index].qty--}else{cart.splice(index,1);}updateCartUI();}
+function removeItem(index){cart.splice(index,1);updateCartUI();}
+updateCartUI();
+</script>
+
+</body>
+</html>
